@@ -1,0 +1,78 @@
+<!-- START PAGE CONTENT -->
+<style>
+    .gallery-item[data-width="1"] {
+        width: 200px;
+    }
+</style>
+<div class="content ">
+    <div class="social-wrapper">
+        <div class="social " data-pages="social">
+            <!-- START JUMBOTRON -->
+            <div class="jumbotron" data-pages="parallax" data-social="cover">
+                <div class="cover-photo" style="background-image: url(&quot;assets/img/social/cover.jpg&quot;); transform: translateY(0px);">
+
+                </div>
+                <div class=" container    container-fixed-lg sm-p-l-0 sm-p-r-0">
+                    <div class="inner" style="transform: translateY(0px); opacity: 1;">
+                        <div class="pull-bottom bottom-left m-b-40 sm-p-l-15">
+                            <h5 class="text-white no-margin">Welcome to App Film</h5>
+                            <h1 class="text-white no-margin"><span class="semi-bold">App</span> Film</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END JUMBOTRON -->
+            <div class=" container    container-fixed-lg sm-p-l-0 sm-p-r-0">
+                <div class="feed">
+                    <!-- START DAY -->
+                    <div class="day" data-social="day" style="position: relative; width: 940px; height: 1389.73px;">
+                        <!-- START ITEM -->
+                        <div class="card no-border bg-transparent full-width" data-social="item" style="position: absolute; left: 0px; top: 0px;">
+                            <!-- START CONTAINER FLUID -->
+                            <div class="container-fluid p-t-30 p-b-30 ">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="container-xs-height">
+                                            <div class="row-xs-height">
+                                                <div class="col-xs-height p-l-20">
+                                                    <img src="{{film.poster_path}}" alt="" class="image-responsive-height" style="height: auto">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <h4>{{film.original_title}}</h4>
+                                        <p class="hint-text m-t-5 small">{{film.overview}}</p>
+                                        <p class="hint-text m-t-5 small"><strong>Popularity:</strong> {{film.popularity}}</p>
+                                        <p class="hint-text m-t-5 small"><strong>Release date:</strong> {{film.release_date}}</p>
+                                        <p class="hint-text m-t-5 small"><strong>Vote Average:</strong> {{film.vote_average}}</p>
+                                        <p class="hint-text m-t-5 small"><strong>Vote Count:</strong> {{film.vote_count}}</p>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <h4>Video</h4>
+                                        <div class="container-xs-height">
+                                            <div class="row-xs-height">
+                                                <div class="col-md-3" ng-repeat="video in videos">
+                                                    <iframe src="{{video | trustUrl}}" frameborder="0"></iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END CONTAINER FLUID -->
+                        </div>
+                        <!-- END ITEM -->
+                    </div>
+                    <!-- END DAY -->
+                </div>
+                <!-- END FEED -->
+            </div>
+        </div>
+        <!-- /container -->
+    </div>
+</div>
+<!-- END PAGE CONTENT -->

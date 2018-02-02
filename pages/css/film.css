@@ -1,0 +1,12 @@
+.gallery-item-item {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    float: left;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.image-responsive-height {
+    height: 100%;
+}

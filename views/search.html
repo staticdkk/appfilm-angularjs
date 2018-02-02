@@ -1,0 +1,90 @@
+<!-- START PAGE CONTENT -->
+<style>
+    .gallery-item[data-width="1"] {
+        width: 200px;
+    }
+</style>
+<div class="content ">
+    <div class="social-wrapper">
+        <div class="social " data-pages="social">
+            <!-- START JUMBOTRON -->
+            <div class="jumbotron" data-pages="parallax" data-social="cover">
+                <div class="cover-photo" style="background-image: url(&quot;assets/img/social/cover.jpg&quot;); transform: translateY(0px);">
+
+                </div>
+                <div class=" container    container-fixed-lg sm-p-l-0 sm-p-r-0">
+                    <div class="inner" style="transform: translateY(0px); opacity: 1;">
+                        <div class="pull-bottom bottom-left m-b-40 sm-p-l-15">
+                            <h5 class="text-white no-margin">Welcome to App Film</h5>
+                            <h1 class="text-white no-margin"><span class="semi-bold">App</span> Film</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END JUMBOTRON -->
+        </div>
+        <!-- /container -->
+    </div>
+    <div class=" container    container-fixed-lg sm-p-l-0 sm-p-r-0">
+        <!-- START CATEGORY -->
+        <div class="gallery" data-ng-init="onLoad()">
+            <div class="gallery-filters p-t-20 p-b-10">
+                <ul class="list-inline text-left">
+                    <li>
+                        <h4>Result Search</h4>
+                    </li>
+                    <li>
+                        <span ng-show="page > 1" ng-click="prevPage()"><i class="pg-arrow_left"></i></span>
+                        <span class="list-inline">Page: <span ng-bind="page"></span></span>
+                        <span ng-show="page < total_pages" ng-click="nextPage()"><i class="pg-arrow_right"></i></span>
+                    </li>
+                </ul>
+            </div>
+            <!-- START GALLERY ITEM -->
+            <!-- 
+                  FOR DEMO PURPOSES, FIRST GALLERY ITEM (.first) IS HIDDEN 
+                  FOR SCREENS <920px. PLEASE REMOVE THE CLASS 'first' WHEN YOU IMPLEMENT 
+              -->
+            <div class="gallery-item-item" data-width="1" data-height="1" ng-repeat="film in listfilm">
+                <!-- START PREVIEW -->
+                <img src="{{film.poster_path}}" alt="" class="image-responsive-height" ng-click="openViewDetail(film.id)">
+                <!-- END PREVIEW -->
+                <!-- START ITEM OVERLAY DESCRIPTION -->
+                <div class="gallery-over overlayer bottom-left full-width" ng-click="openViewDetail(film.id)">
+                    <div class="overlayer-wrapper item-info ">
+                        <div class="gradient-grey p-l-20 p-r-20 p-t-20 p-b-5">
+                            <div class="">
+                                <p class="pull-left bold text-white fs-14 p-t-10" ng-bind="film.original_title"></p>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="m-t-10">
+                                <!-- <div class="thumbnail-wrapper d32 m-t-5">
+                                    <img width="40" height="40" src="{{ film.poster_path }}" data-src="{{film.poster_path}}" data-src-retina="{{film.poster_path}}" alt="">
+                                </div> -->
+                                <div class="inline m-l-10">
+                                    <p class="no-margin text-white fs-12" ng-bind="film.release_date"></p>
+                                    <p class="rating">
+                                        <i class="fa fa-star rated"></i>
+                                        <i class="fa fa-star rated"></i>
+                                        <i class="fa fa-star rated"></i>
+                                        <i class="fa fa-star rated"></i>
+                                        <i class="fa fa-star"></i>
+                                    </p>
+                                </div>
+                                <div class="pull-right m-t-10">
+                                    <span ng-bind="film.vote_count"></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END PRODUCT OVERLAY DESCRIPTION -->
+            </div>
+        </div>
+
+
+        <!-- END CATEGORY -->
+    </div>
+</div>
+<!-- END PAGE CONTENT -->

@@ -1,0 +1,142 @@
+<!-- START PAGE CONTENT -->
+<style>
+    .gallery-item[data-width="1"] {
+        width: 200px;
+    }
+</style>
+<div class="content ">
+    <div class="social-wrapper">
+        <div class="social " data-pages="social">
+            <!-- START JUMBOTRON -->
+            <div class="jumbotron" data-pages="parallax" data-social="cover">
+                <div class="cover-photo" style="background-image: url(&quot;assets/img/social/cover.jpg&quot;); transform: translateY(0px);">
+
+                </div>
+                <div class=" container    container-fixed-lg sm-p-l-0 sm-p-r-0">
+                    <div class="inner" style="transform: translateY(0px); opacity: 1;">
+                        <div class="pull-bottom bottom-left m-b-40 sm-p-l-15">
+                            <h5 class="text-white no-margin">Welcome to App Film</h5>
+                            <h1 class="text-white no-margin"><span class="semi-bold">App</span> Film</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END JUMBOTRON -->
+        </div>
+        <!-- /container -->
+    </div>
+    <div class=" container    container-fixed-lg sm-p-l-0 sm-p-r-0">
+        <!-- START CATEGORY -->
+        <div class="gallery">
+            <div class="gallery-filters p-t-20 p-b-10">
+                <ul class="list-inline text-left">
+                    <li>
+                        <h4>Now Playing</h4>
+                    </li>
+                    <li>
+                        <h5>Filter</h5>
+                    </li>
+                    <li><input type="text" ng-model="filter"></li>
+                    <li><span>{{filter|reverse:true}}</span></li>
+                    <li>
+                        <h5>Search</h5>
+                    </li>
+                    <li><input type="text" ng-model="search"></li>
+                    <li><input class="btn btn-xs btn-animated" type="button" value="Search" ng-click="clickSearch()"></li>
+                </ul>
+            </div>
+            <!-- START GALLERY ITEM -->
+            <!-- 
+                  FOR DEMO PURPOSES, FIRST GALLERY ITEM (.first) IS HIDDEN 
+                  FOR SCREENS <920px. PLEASE REMOVE THE CLASS 'first' WHEN YOU IMPLEMENT 
+              -->
+            <div class="gallery-item" data-width="1" data-height="1" ng-repeat="film in listfilm">
+                <!-- START PREVIEW -->
+                <img src="{{film.poster_path}}" alt="" class="image-responsive-height" ng-click="openPopupDetail(film.id)">
+                <!-- END PREVIEW -->
+                <!-- START ITEM OVERLAY DESCRIPTION -->
+                <div class="overlayer bottom-left full-width" ng-click="openPopupDetail(film.id)">
+                    <div class="overlayer-wrapper item-info ">
+                        <div class="gradient-grey p-l-20 p-r-20 p-t-20 p-b-5">
+                            <div class="">
+                                <p class="pull-left bold text-white fs-14 p-t-10" ng-bind="film.original_title"></p>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="m-t-10">
+                                <!-- <div class="thumbnail-wrapper d32 m-t-5">
+                                    <img width="40" height="40" src="{{ film.poster_path }}" data-src="{{film.poster_path}}" data-src-retina="{{film.poster_path}}" alt="">
+                                </div> -->
+                                <div class="inline m-l-10">
+                                    <p class="no-margin text-white fs-12" ng-bind="film.release_date"></p>
+                                    <p class="rating">
+                                        <i class="fa fa-star rated"></i>
+                                        <i class="fa fa-star rated"></i>
+                                        <i class="fa fa-star rated"></i>
+                                        <i class="fa fa-star rated"></i>
+                                        <i class="fa fa-star"></i>
+                                    </p>
+                                </div>
+                                <div class="pull-right m-t-10">
+                                    <span ng-bind="film.vote_count"></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END PRODUCT OVERLAY DESCRIPTION -->
+            </div>
+        </div>
+
+
+        <!-- END CATEGORY -->
+    </div>
+    <!-- START DIALOG -->
+    <div id="itemDetails" class="dialog item-details">
+        <div class="dialog__overlay"></div>
+        <div class="dialog__content">
+            <div class="container-fluid">
+                <div class="row dialog__overview">
+                    <div class="col-md-7 no-padding item-slideshow-wrapper full-height">
+                        <div class="item-slideshow full-height">
+                            <div class="slide" data-image="assets/img/gallery/item-square.jpg">
+                                <img src="{{popupDetail.poster_path}}" alt="" width="100%" height="100%">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 p-r-35 p-t-35 p-l-35 full-height item-description">
+                        <h2 class="semi-bold no-margin font-montserrat" ng-bind="popupDetail.original_title"></h2>
+                        <p class="rating fs-12 m-t-5">
+                            <i class="fa fa-star "></i>
+                            <i class="fa fa-star "></i>
+                            <i class="fa fa-star "></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </p>
+                        <p class="fs-13" ng-bind="popupDetail.overview"></p>
+                        <!-- <div class="row m-b-20 m-t-20">
+                            <div class="col-6"><span class="font-montserrat all-caps fs-11">Price Ticket</span>
+                            </div>
+                            <div class="col-6 text-right">$20.00</div>
+                        </div> -->
+                        <br>
+                        <button class="btn btn-sm btn-primary" ng-click="openViewDetail(popupDetail.id)">View Detail</button>
+                    </div>
+                </div>
+                <div class="row dialog__footer bg-info-dark hidden-sm-down">
+                    <div class="col-md-12 full-height">
+                        <ul class="recommended list-inline pull-left m-t-10 m-b-0">
+                            <li>
+                                <a href="#"><img src="{{popupDetail.poster_path}}"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <button class="close action top-right" data-dialog-close><i class="pg-close fs-14"></i>
+            </button>
+        </div>
+    </div>
+    <!-- END DIALOG -->
+</div>
+<!-- END PAGE CONTENT -->
